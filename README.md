@@ -154,7 +154,6 @@ python main.py {configs you want to use} --work_dirs {your folder} --load_from {
 | ResNet-34     |   90.39   | 94.38   |4.4   |4.9   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/vil_res34.pth)  |
 | ResNet-101     |   90.90   | 94.27   |4.7   |5.0   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/vil_res101.pth)  |
 
-
 ### CULane
 |   Backbone  |   F1@50  | Download |
 | :---  |     :---:    | :---:    | 
