@@ -5,3 +5,5 @@
 /cache
 /data
 /work_dirs
+**/__pycache__
+**/*.so

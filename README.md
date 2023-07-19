@@ -3,35 +3,42 @@
 Pytorch implementation of the paper "ADNet: Lane Shape Prediction via Anchor Decomposition " (ICCV2023 Acceptance)
 ## Introduction
 
+In this paper, we revisit the limitations of anchor-based lane detection methods, which have predominantly focused on fixed anchors that stem from the edges of the image, disregarding their versatility and quality. To overcome the inflexibility of anchors, we decompose them into learning the heat map of starting points and their associated directions. This decomposition removes the limitations on the starting point of anchors, making our algorithm adaptable to different lane types in various datasets. To enhance the quality of anchors, we introduce the Large Kernel Attention (LKA) for Feature Pyramid Network (FPN). This significantly increases the receptive field, which is crucial in capturing the sufficient context as lane lines typically run throughout the entire image. We have named our proposed system the Anchor Decomposition Network (ADNet). Additionally, we propose the General Lane IoU (GLIoU) loss, which significantly improves the performance of ADNet in complex scenarios. Experimental results on three widely used lane detection benchmarks, VIL-100, CULane, and TuSimple, demonstrate that our approach outperforms the state-of-the-art methods on VIL-100 and exhibits competitive accuracy on CULane and TuSimple.
 ## Environment setup
+1. Clone this repository
+```Shell
+git clone https://github.com/Sephirex-X/ADNet.git
+```
+2. create conda environment if you using conda
 
-1. create conda environment if you using conda
-
-```bash
+```Shell
 conda create -n ADNet && conda activate ADNet
 ```
 
-2. install pytorch and Shapely
+   
+3. install pytorch and Shapely
 
-```bash
+```Shell
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch
 ```
 
-```bash
+```Shell
 conda install Shapely==1.7.0
 ```
 
-3. building independencies
+   
+4. building independencies
 
-```bash
+```Shell
 pip install -r requirements.txt
 ```
 
 adding `-i https://pypi.tuna.tsinghua.edu.cn/simple` if you locate in China mainland.
 
-4. setup everything
+   
+5. setup everything
 
-```bash
+```Shell
 python setup.py build develop
 ```
 
@@ -39,13 +46,13 @@ python setup.py build develop
 
 1. create folder under root path using
 
-```bash
+```Shell
 mkdir data
 ```
 
 2. organize structure like these:
 
-```bash
+```Shell
 data/
 ├── CULane -> /mnt/data/xly/CULane/
 ├── tusimple -> /mnt/data/xly/tusimple/
@@ -55,7 +62,7 @@ data/
 under each folder, you may see structure like this:
 
 ### CULane
-
+Download [CULane](https://xingangpan.github.io/projects/CULane.html).
 ```
 /mnt/data/xly/CULane/
 ├── driver_100_30frame
@@ -69,7 +76,7 @@ under each folder, you may see structure like this:
 ```
 
 ### Tusimple
-
+Download [Tusimple](https://github.com/TuSimple/tusimple-benchmark/issues/3).
 ```
 /mnt/data/xly/tusimple/
 ├── clips
@@ -82,8 +89,8 @@ under each folder, you may see structure like this:
 ```
 
 ### VIL-100
-
-```bash
+Download [VIL-100](https://github.com/yujun0-0/mma-net).
+```Shell
 /mnt/data/xly/VIL100/
 ├── Annotations
 ├── anno_txt
@@ -96,13 +103,13 @@ under each folder, you may see structure like this:
 
 1. You can inferencing model using: 
 
-```bash
+```Shell
 python main.py {configs you want to use} --work_dirs {your folder} --load_from {your checkpoint path} --validate --gpus {device id}
 ```
 
 for example:
 
-```bash
+```Shell
 python main.py configs/adnet/tusimple/resnet18_tusimple.py --work_dirs test --load_from best_ckpt/tusimple/res18/best.pth --validate --gpus 3
 ```
 
@@ -112,7 +119,7 @@ If you don't assign `--work_dirs`, it will create folder named  `work_dirs` unde
 
 3. You can test fps using:
 
-```bash
+```Shell
 python tools/fps_test.py
 ```
 
@@ -120,13 +127,13 @@ python tools/fps_test.py
 
 1. Simply using:
 
-```bash
+```Shell
 python main.py {configs you want to use} --work_dirs {your folder} --gpus {device id}
 ```
 
 2. You can resume from your last checkpoint by: 
 
-```bash
+```Shell
 python main.py {configs you want to use} --work_dirs {your folder} --load_from {your checkpoint path} --gpus {device id}
 ```
 
@@ -134,7 +141,7 @@ python main.py {configs you want to use} --work_dirs {your folder} --load_from {
 
 4. Your can check training procedure using tensorboard module:
 
-   ```bash
+   ```Shell
    tensorboard --logdir {your folder} --host=0.0.0.0 --port=1234
    ```
 
