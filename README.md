@@ -2,8 +2,8 @@
 
 Pytorch implementation of the paper "ADNet: Lane Shape Prediction via Anchor Decomposition " (ICCV2023 Acceptance)
 ## Introduction
-
 In this paper, we revisit the limitations of anchor-based lane detection methods, which have predominantly focused on fixed anchors that stem from the edges of the image, disregarding their versatility and quality. To overcome the inflexibility of anchors, we decompose them into learning the heat map of starting points and their associated directions. This decomposition removes the limitations on the starting point of anchors, making our algorithm adaptable to different lane types in various datasets. To enhance the quality of anchors, we introduce the Large Kernel Attention (LKA) for Feature Pyramid Network (FPN). This significantly increases the receptive field, which is crucial in capturing the sufficient context as lane lines typically run throughout the entire image. We have named our proposed system the Anchor Decomposition Network (ADNet). Additionally, we propose the General Lane IoU (GLIoU) loss, which significantly improves the performance of ADNet in complex scenarios. Experimental results on three widely used lane detection benchmarks, VIL-100, CULane, and TuSimple, demonstrate that our approach outperforms the state-of-the-art methods on VIL-100 and exhibits competitive accuracy on CULane and TuSimple.
+![image](figs/adnet.jpg)
 ## Environment setup
 1. Clone this repository
 ```Shell
@@ -116,7 +116,7 @@ python main.py configs/adnet/tusimple/resnet18_tusimple.py --work_dirs test --lo
 If you don't assign `--work_dirs`, it will create folder named  `work_dirs` under root path by default.
 
 2. By adding `--view` you can see visualization results under folder `vis_results`, under root path.
-
+![image2](figs/vis.jpg)
 3. You can test fps using:
 
 ```Shell
@@ -144,5 +144,19 @@ python main.py {configs you want to use} --work_dirs {your folder} --load_from {
    ```Shell
    tensorboard --logdir {your folder} --host=0.0.0.0 --port=1234
    ```
+## Citation
 
+If you find our work is useful, please consider citing:
+```
+
+```
+## Acknowledgement
+<!--ts-->
+* [open-mmlab/mmdetection](https://github.com/open-mmlab/mmdetection)
+* [pytorch/vision](https://github.com/pytorch/vision)
+* [Turoad/lanedet](https://github.com/Turoad/lanedet)
+* [Turoad/CLRNet](https://github.com/Turoad/CLRNet)
+* [lucastabelini/LaneATT](https://github.com/lucastabelini/LaneATT)
+* [aliyun/conditional-lane-detection](https://github.com/aliyun/conditional-lane-detection)
+<!--te-->
    
