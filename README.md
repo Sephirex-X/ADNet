@@ -1,7 +1,7 @@
 # ADNet: Lane Shape Prediction via Anchor Decomposition 
 
 Pytorch implementation of the paper "ADNet: Lane Shape Prediction via Anchor Decomposition " (ICCV2023 Acceptance)
-## Introduction
+## Abstract
 In this paper, we revisit the limitations of anchor-based lane detection methods, which have predominantly focused on fixed anchors that stem from the edges of the image, disregarding their versatility and quality. To overcome the inflexibility of anchors, we decompose them into learning the heat map of starting points and their associated directions. This decomposition removes the limitations on the starting point of anchors, making our algorithm adaptable to different lane types in various datasets. To enhance the quality of anchors, we introduce the Large Kernel Attention (LKA) for Feature Pyramid Network (FPN). This significantly increases the receptive field, which is crucial in capturing the sufficient context as lane lines typically run throughout the entire image. We have named our proposed system the Anchor Decomposition Network (ADNet). Additionally, we propose the General Lane IoU (GLIoU) loss, which significantly improves the performance of ADNet in complex scenarios. Experimental results on three widely used lane detection benchmarks, VIL-100, CULane, and TuSimple, demonstrate that our approach outperforms the state-of-the-art methods on VIL-100 and exhibits competitive accuracy on CULane and TuSimple.
 ![image](figs/adnet.jpg)
 ## Environment setup
@@ -144,6 +144,30 @@ python main.py {configs you want to use} --work_dirs {your folder} --load_from {
    ```Shell
    tensorboard --logdir {your folder} --host=0.0.0.0 --port=1234
    ```
+## Results
+
+![image_3](figs/compare.jpg)
+### VIL-100
+|   Backbone  |   F1@50  | Acc |FP |FN |Download |
+| :---        |   :---:  | :---:    | :---:    | :---:    | :---:    | 
+| ResNet-18     |   89.97   | 94.23  |5.0   |5.1   |[Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/vil_res18.pth) |
+| ResNet-34     |   90.39   | 94.38   |4.4   |4.9   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/vil_res34.pth)  |
+| ResNet-101     |   90.90   | 94.27   |4.7   |5.0   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/vil_res101.pth)  |
+
+### CULane
+|   Backbone  |   F1@50  | Download |
+| :---  |     :---:    | :---:    | 
+| ResNet-18     |   77.56   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/culane_res18.pth)  |
+| ResNet-34     |   78.94   |  [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/culane_res34.pth)  |
+
+### Tusimple
+
+|   Backbone  |   F1@50  | Acc |FP |FN |Download |
+| :---        |   :---:  | :---:    | :---:    | :---:    | :---:    | 
+| ResNet-18     |   96.90   | 96.23  |2.91   |3.29   |[Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/tusimple_res18.pth)  |
+| ResNet-34     |   97.31   | 96.60   |2.83   |2.53   | [Link](https://github.com/Sephirex-X/ADNet/releases/download/ckpt/tusimple_res34.pth)  |
+
+
 ## Citation
 
 If you find our work is useful, please consider citing:
