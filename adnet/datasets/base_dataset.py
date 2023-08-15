@@ -30,7 +30,7 @@ class BaseDataset(Dataset):
             img = cv2.imread(osp.join(self.data_root, img_name))
             gts = img_meta['no_aug_lanes']
             # img = cv2.imread(img_meta['full_img_path'])
-            out_file = osp.join('vis_results', 'visualization_tusimple',
+            out_file = osp.join('vis_results',
                                 img_name.replace('/', '_'))
             lanes = [lane.to_array(self.cfg) for lane in lanes]
             def trans(lane, para):
