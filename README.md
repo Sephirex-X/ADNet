@@ -172,7 +172,12 @@ python main.py {configs you want to use} --work_dirs {your folder} --load_from {
 
 If you find our work is useful, please consider citing:
 ```
-
+@article{xiao2023adnet,
+  title={ADNet: Lane Shape Prediction via Anchor Decomposition},
+  author={Xiao, Lingyu and Li, Xiang and Yang, Sen and Yang, Wankou},
+  journal={arXiv preprint arXiv:2308.10481},
+  year={2023}
+}
 ```
 ## Acknowledgement
 <!--ts-->
