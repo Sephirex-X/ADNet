@@ -180,6 +180,14 @@ If you find our work is useful, please consider citing:
   journal={arXiv preprint arXiv:2308.10481},
   year={2023}
 }
+@InProceedings{Xiao_2023_ICCV,
+    author    = {Xiao, Lingyu and Li, Xiang and Yang, Sen and Yang, Wankou},
+    title     = {ADNet: Lane Shape Prediction via Anchor Decomposition},
+    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+    month     = {October},
+    year      = {2023},
+    pages     = {6404-6413}
+}
 ```
 ## Acknowledgement
 <!--ts-->
